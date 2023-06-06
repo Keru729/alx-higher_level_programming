@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 # 10-add.py
-# Kerubel Solomon <kibi729@gmail.com>
+#Kerubel Solomon <kibi729@gmail.com>
+
 
 def add(a, b):
-   """add two integers.""" 
+    """Return the addition of a and b."""
     return (a + b)
