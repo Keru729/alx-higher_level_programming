@@ -1,9 +1,7 @@
--- Creates the user user_0d_1 with all privileges.
-CREATE USER
-    IF NOT EXISTS 'user_0d_1'@'localhost'
-    IDENTIFIED BY 'user_0d_1_pwd';
-GRANT ALL PRIVILEGES
-   ON *.*
-   TO 'user_0d_1'@'localhost'
-   IDENTIFIED BY 'user_0d_1_pwd';
-FLUSH PRIVILEGES;
+-- Lists all cities in the database hbtn_0d_usa.
+-- Records are sorted in order of ascending cities.id.
+SELECT c.`id`, c.`name`, s.`name`
+  FROM `cities` AS c
+       INNER JOIN `states` AS s
+       ON c.`state_id` = s.`id`
+ ORDER BY c.`id`;
