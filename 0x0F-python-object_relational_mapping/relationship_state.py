@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-"""File contains class State and instance Base = declarative_base()"""
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+"""
+Contains State class and Base, an instance of declarative_base()
+"""
+from sqlalchemy import Column, Integer, String, MetaData
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+mymetadata = MetaData()
+Base = declarative_base(metadata=mymetadata)
 
 
 class State(Base):
-    """State class inherits from Base
-
-    Links to MySQL table 'states'
-
-    Attributes:
-        id: column of auto-generated unique integer, can't be NULL, primary key
-        name: column of string with max 128 characters, can't be NULL
-        cities: relationship with class City
+    """
+    Class with id and name attributes of each state
     """
     __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128))
-    cities = relationship("City", backref="state")
+    id = Column(Integer, unique=True, nullable=False, primary_key=True)
+    name = Column(String(128), nullable=False)
+    cities = relationship("City", backref="states")
